@@ -66,6 +66,44 @@ const questions = () => {
     })
 }
 
+// function for generating html file.
+const generateHTML = (employee) => {
+  return ` <!DOCTYPE html>
+  <html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+    <title>Team Profile</title>
+  </head>
+  <body>
+    <div class ="container">
+      <div class="row">
+        <h1>Meet the Team</h1>
+      </div>
+    </div>
+    <div class ="container">
+      <div class="row">
+      </div>
+    </div>
+  </body>
+</html>` ;
+  
+};
+
+//function for  write to HTML file
+function writeToFile(fileName, data) {
+  fs.writeFile(fileName, data, (err) => {
+    err ? console.log(`Error: ${err}`) : console.log("Success!");
+  });
+}
+
+
+
+
 // initialize application
 function init() {
   questions();
