@@ -11,22 +11,22 @@ describe("Manager", () => {
   const manager = new Manager(name, id, email, officeNumber)
 
   it("Should return Manager name", () => {
-    expect(manager.getManagerName()).toBe(name);
+    expect(manager.getName()).toBe(name);
   });
 
   it("Should return Manager office number", () => {
-    expect(manager.officeNumber()).toBe(officeNumber);
+    expect(manager.officeNumber).toBe(officeNumber);
   });
 
   it("Should return Manager id", () => {
-    expect(manager.getManagerId()).toBe(id);
+    expect(manager.getId()).toBe(id);
   });
 
   it("Should return Manager email", () => {
-    expect(manager.getManagerEmail()).toBe(email);
+    expect(manager.getEmail()).toBe(email);
   });
 
   it("Should return Manager role", () => {
-    expect(manager.getManagerRole()).toBe(role);
+    expect(manager.getRole()).toBe(role);
   });
 });
