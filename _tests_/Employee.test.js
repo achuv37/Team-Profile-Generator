@@ -1,14 +1,14 @@
 
-const { it } = require("@jest/globals");
+
 const Employee = require("../lib/Employee.js");
 
-describe("Employee", () => {
+describe("Employees", () => {
   const name = "John";
   const id = 12;
   const email = "john@gmail.com";
   const role = "Employee";
 
-  const employees = new Employee(name,id,email);
+  const employees = new Employee(name, id, email);
 
   it("should return a employee name when it called", () => {
     expect(employees.getEmployeeName()).toBe(name);
