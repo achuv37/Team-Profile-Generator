@@ -18,6 +18,67 @@ const validation = {
   }
 }
 
+
+
+// create team card
+const createTeamCard = (team) => {
+  let employeeType = "";
+  let role;
+  let icon = "";
+  if(team.getRole() === Employee.Manager) {
+    role = `Office Number: ${team.officeNumber}`;
+    employeeType = "bg-primary text-light";
+    icon = "<i class='bi bi-cup-straw'></i>";
+  } else if (team.getRole() === Employee.Engineer) {
+    role = `Github: ${team.getGithub()}`;
+    employeeType = "bg-secondary text-light";
+    icon = "<i class='bi bi-cup-fill'></i>";
+  } else if (team.getRole() === Employee.Intern) {
+    role = `School: ${team.getSchool()}`;
+    employeeType = "bg-success text-light";
+    icon = "<i class='bi bi-mortarboard-fill'></i>";
+  } else {
+    return ("Error");
+  }
+
+  return `<div class="col">
+            <div class= "card">
+              <div class="card-header ${employeeType}">
+                <h4 class="card-title">
+                  ${icon}
+                  ${team.getName().toUpperCase()}
+                </h4>
+              </div>
+              <div class="card-body">
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    Role: ${team.getRole()}
+                  </li>
+                  <li class="list-group-item">
+                    Id: ${team.getId()}
+                  </li>
+                  <li class="list-group-item">
+                    Email: <a href="mail @: ${team.getEmail()}">${team.getEmail()}</a>
+                  </li>
+                  <li class="list-group-item">
+                    ${role}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>`;
+};
+
+// display the team members
+const displayCard = (employee) => {
+  let employeeArray = [];
+  employee.forEach((team) => {
+    employeeArray.push(createTeamCard(team));
+  });
+  return employeeArray.join('');
+}
+
+
 // function for generating html file.
 const generateHTML = (employee) => {
   return ` <!DOCTYPE html>
@@ -29,6 +90,9 @@ const generateHTML = (employee) => {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">    
+    
+    
     <title>Team Profile</title>
   </head>
   <body>
@@ -39,12 +103,14 @@ const generateHTML = (employee) => {
     </div>
     <div class ="container">
       <div class="row">
+        ${displayCard(employee)}
       </div>
     </div>
   </body>
 </html>` ;
   
 };
+
 
 //function for  write to HTML file
 function writeToFile(fileName, data) {
@@ -139,7 +205,7 @@ const promptUser = () => {
         type: "input",
         message: "Enter intern's school:",
         name: "internSchool",
-        when: (answers) => answers.employeeType === Employee.Intern,
+        when: (answers) => answers.menu === Employee.Intern,
         validate: (response) => {
           return validation.required(response);
         },
@@ -148,7 +214,7 @@ const promptUser = () => {
         type: "input",
         message: "Enter Engineer github username",
         name: "engineerGithubUsername",
-        when: (answers) => answers.employeeType === Employee.Engineer,
+        when: (answers) => answers.menu === Employee.Engineer,
         validate: (response) => {
           return validation.required(response);
         },
