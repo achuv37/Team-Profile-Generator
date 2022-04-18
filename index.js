@@ -4,14 +4,17 @@ const Manager = require("./lib/Manager.js");
 const Engineer = require("./lib/Engineer.js");
 const Intern = require("./lib/Intern.js");
 
+// creating an empty array for employees.
 let employee = [];
 
+// Employee object with three properties
 const Employee = {
   Intern: "Intern",
   Engineer: "Engineer",
   Manager: "Manager"
 };
 
+// validating the input.
 const validation = {
   required: (response) => {
     return response ? true : console.error("It is a required field");
@@ -28,11 +31,11 @@ const createTeamCard = (team) => {
   if(team.getRole() === Employee.Manager) {
     role = `Office Number: ${team.officeNumber}`;
     employeeType = "bg-primary text-light";
-    icon = "<i class='bi bi-cup-straw'></i>";
+    icon = "<i class='bi bi-cup-fill'></i>";
   } else if (team.getRole() === Employee.Engineer) {
     role = `Github: ${team.getGithub()}`;
     employeeType = "bg-secondary text-light";
-    icon = "<i class='bi bi-cup-fill'></i>";
+    icon = "<i class='bi bi-headset-vr'></i>";
   } else if (team.getRole() === Employee.Intern) {
     role = `School: ${team.getSchool()}`;
     employeeType = "bg-success text-light";
@@ -41,7 +44,7 @@ const createTeamCard = (team) => {
     return ("Error");
   }
 
-  return `<div class="col">
+  return `<div class="col-sm-6 col-lg-4">
             <div class= "card">
               <div class="card-header ${employeeType}">
                 <h4 class="card-title">
@@ -91,18 +94,17 @@ const generateHTML = (employee) => {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">    
-    
-    
     <title>Team Profile</title>
   </head>
   <body>
-    <div class ="container">
-      <div class="row">
-        <h1>Meet the Team</h1>
+    <div class ="container p-5">
+      <div class="row bg-info p-3">
+
+        <h1 class="mx-auto">Meet the Team</h1>
       </div>
     </div>
-    <div class ="container">
-      <div class="row">
+    <div class ="container m-5">
+      <div class="row m-5">
         ${displayCard(employee)}
       </div>
     </div>
@@ -221,7 +223,7 @@ const promptUser = () => {
       },
       {
         type: "confirm",
-        message:"Do u have another employee to add?",
+        message:"Do u want to add another employee?",
         name: "repeat",
       },
     ])
