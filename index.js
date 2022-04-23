@@ -1,4 +1,5 @@
-const questions = require("./dist/questions.js");
+// Import the file using require
+const questions = require("./src/questions.js");
 
 
 // initialize application

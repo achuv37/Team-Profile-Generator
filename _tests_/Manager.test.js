@@ -1,6 +1,6 @@
 const { describe, it, expect } = require("@jest/globals");
 const Manager = require("../lib/Manager.js");
-
+// describe call is what gives structure to the test suite.
 describe("Manager", () => {
   const name = "Jackson";
   const id = 5;
@@ -9,7 +9,8 @@ describe("Manager", () => {
   const role = "Manager";
 
   const manager = new Manager(name, id, email, officeNumber)
-
+  
+  //testing
   it("Should return Manager name", () => {
     expect(manager.getName()).toBe(name);
   });

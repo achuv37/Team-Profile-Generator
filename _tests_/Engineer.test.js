@@ -1,5 +1,5 @@
 const Engineer = require("../lib/Engineer.js");
-
+// describe call is what gives structure to the test suite.
 describe("Engineer", () => {
   const name = "Mathew";
   const id = 10;
@@ -9,7 +9,9 @@ describe("Engineer", () => {
   const githubLink = `<a href ="https://github.com/${githubUsername}" target ="_blank">https://github.com/${githubUsername}</a>`;
 
   const engineer = new Engineer(name, id, email, githubUsername);
-
+  
+  // testing
+  
   it("should return a engineer name when it called", () => {
     expect(engineer.getName()).toBe(name);
   });

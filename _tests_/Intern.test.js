@@ -1,5 +1,6 @@
 const Intern = require("../lib/Intern.js");
 
+// describe call is what gives structure to the test suite.
 describe("Intern", () => {
     const name = "Tony";
     const id = 7;
@@ -9,6 +10,7 @@ describe("Intern", () => {
 
     const intern = new Intern(name, id, email, school);
     
+    // testing
     it("should return intern school when it called", () => {
         expect(intern.getSchool()).toBe(school);
       });
