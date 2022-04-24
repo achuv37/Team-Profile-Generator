@@ -10,7 +10,7 @@ describe("Intern", () => {
 
     const intern = new Intern(name, id, email, school);
     
-    // testing
+    // testing 
     it("should return intern school when it called", () => {
         expect(intern.getSchool()).toBe(school);
       });

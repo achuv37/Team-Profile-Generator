@@ -7,5 +7,5 @@ function init() {
   questions();
 }
 
-// calling function init
+// calling function init function.
 init();
