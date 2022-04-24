@@ -9,11 +9,15 @@ The Team Profile Generator is a command-line-input application run in Node. js
 * Html
 * Css
 * JavaScript
+* Node.js
+* Express.js
+* Inquirer
+* Jest
 
 ## Images
 ![team profile img](https://user-images.githubusercontent.com/93412486/164943218-0de995d6-3a28-4aab-af46-681ae147bf92.png)
 
 ## Video
-
+https://www.youtube.com/watch?v=q2QBBt7e0C4
 ## Contributed by
 Aswathy
